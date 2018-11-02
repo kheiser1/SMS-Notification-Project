@@ -1,4 +1,4 @@
-// Place all the styles related to the Welcome controller here.
+/ Place all the styles related to the Welcome controller here.
 
 h1{
     font-size: 50px;
@@ -6,15 +6,21 @@ h1{
 }
 p{
     font-size: 20px;
-    color: yellow;
+    color: ForestGreen;
 }
 body{
     background: rgb(211, 211, 211);
 }
 
-#button{
-    color: blue;
-    background-color: blue;
+input[type=button], input[type=submit]{
+    background-color: ForestGreen ;
+    float: right;
+    border: none;
+    color: white;
+    padding: 16px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    
 }
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
