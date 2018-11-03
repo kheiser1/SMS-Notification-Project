@@ -29,6 +29,14 @@ class RemindersController < ApplicationController
             render 'edit'
         end
     end
+    
+    def destroy
+        @reminder = Reminder.find(params[:id])
+        
+        @reminder.destroy
+        
+        redirect_to reminders_path
+    end
 end
 
 private

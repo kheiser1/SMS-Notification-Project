@@ -17,6 +17,13 @@
       <td><%= reminder.notes %></td>
       <td><%= link_to 'Show', reminder_path(reminder) %></td>
       <td><%= link_to 'Edit', edit_reminder_path(reminder) %></td>
+      <td>
+          <%= link_to 'Destroy',
+              reminder_path(reminder),
+              method: :delete,
+              data: { confirm: 'Are you sure you want to delete this reminder?' } 
+            %>
+      </td>
     </tr>
   <% end %>
 </table>
