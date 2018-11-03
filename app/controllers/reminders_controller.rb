@@ -1,12 +1,16 @@
 class RemindersController < ApplicationController
     def new
-        @reminder = Reminder.new()
+        @reminder = Reminder.new
     end
     
     def create
         @reminder = Reminder.new(reminder_params)
-        @reminder.save
-        redirect_to @reminder
+        
+        if @reminder.save
+            redirect_to @reminder
+        else
+            render 'new'
+        end
     end
     
     def show
