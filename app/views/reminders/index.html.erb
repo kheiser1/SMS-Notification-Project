@@ -1,1 +1,20 @@
 <h1>List Reminders</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Notes</th>
+  </tr>
+ 
+  <% @reminders.each do |reminder| %>
+    <tr>
+      <td><%= reminder.title %></td>
+      <td><%= reminder.date %></td>
+      <td><%= reminder.time %></td>
+      <td><%= reminder.notes %></td>
+      <td><%= link_to 'Show', reminder_path(reminder) %></td>
+    </tr>
+  <% end %>
+</table>
