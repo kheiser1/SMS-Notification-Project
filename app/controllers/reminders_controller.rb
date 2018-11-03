@@ -15,6 +15,20 @@ class RemindersController < ApplicationController
     def index
         @reminders = Reminder.all   
     end
+    
+    def edit
+        @reminder = Reminder.find(params[:id])
+    end
+    
+    def update
+        @reminder = Reminder.find(params[:id])
+        
+        if @reminder.update(reminder_params)
+            redirect_to @reminder
+        else
+            render 'edit'
+        end
+    end
 end
 
 private

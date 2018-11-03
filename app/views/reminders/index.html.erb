@@ -1,5 +1,6 @@
 <h1>List Reminders</h1>
 
+<%= link_to 'New Reminder', new_reminder_path %><br>
 <table>
   <tr>
     <th>Title</th>
@@ -15,6 +16,7 @@
       <td><%= reminder.time %></td>
       <td><%= reminder.notes %></td>
       <td><%= link_to 'Show', reminder_path(reminder) %></td>
+      <td><%= link_to 'Edit', edit_reminder_path(reminder) %></td>
     </tr>
   <% end %>
 </table>
