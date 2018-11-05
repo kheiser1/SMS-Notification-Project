@@ -1,0 +1,18 @@
+<p>
+    <strong> Title: </strong>
+    <%= @reminder.title %>
+</p>
+<p>
+    <strong> Date: </strong>
+    <%= @reminder.date %>
+</p>
+<p>
+    <strong> Time: </strong>
+    <%= @reminder.time %>
+</p>
+<p>
+    <strong> Notes: </strong>
+    <%= @reminder.notes %>
+</p>
+
+<%= link_to 'List of Reminders', reminders_path%>
