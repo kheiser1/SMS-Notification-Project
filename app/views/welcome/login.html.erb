@@ -1,0 +1,18 @@
+<h1>Login</h1
+<%= form_for :user do |f| %>
+  <p>
+    <%= f.label :email, 'Emaill Address' %>
+    <%= f.string :email %>
+  </p>
+  
+  <p>
+    <%= f.label :password, 'Password' %>
+    <%= f.string :password %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', reminders_path%>

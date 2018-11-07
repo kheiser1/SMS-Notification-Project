@@ -1,2 +1,3 @@
 class Reminder < ApplicationRecord
+ 
 end

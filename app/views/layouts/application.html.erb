@@ -1,15 +1,36 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--  <head>-->
+<!--    <title>Reminder</title>-->
+<!--    <%#= csrf_meta_tags %>-->
+<!--    <%#= csp_meta_tag %>-->
+
+<!--    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>-->
+<!--    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>-->
+<!--  </head>-->
+
+<!--  <body>-->
+<!--    <%#= yield %>-->
+<!--  </body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Reminder</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>GifVault</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<% if current_user %>
+  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+<% else %>
+  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+<% end %>
 
-  <body>
-    <%= yield %>
-  </body>
+<%= yield %>
+
+</body>
 </html>
