@@ -6,7 +6,7 @@ def create
   user = User.new(user_params)
   if user.save
     session[:user_id] = user.id
-     render 'welcome#index'
+    redirect_to '/welcome/index'
   else
     redirect_to '/signup'
   end
