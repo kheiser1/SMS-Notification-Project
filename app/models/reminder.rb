@@ -1,6 +1,4 @@
 class Reminder < ApplicationRecord
-    validates :title, presence: true, length: { minimum: 5 }
-    validates :date, presence: true
-    validates :time, presence: true
-    validates :notes, presence: true, length: { minimum: 10 }
+ belongs_to :user, :class_name => "User"
+
 end
