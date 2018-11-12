@@ -1,7 +1,9 @@
 <h1>Welcome to the SMS Reminder App</h1>
 <%#= link_to 'Reminder List', controller: 'reminders' %>
 <%= link_to 'New Reminder', new_user_reminder_path(@user) %><br>
-<%= link_to 'List of Reminders', user_reminders_path(@user)%>
+<%= link_to 'List of Reminders', user_reminders_path(@user)%><br>
+<%= link_to 'My Account', users_path(@user)%>
+
 <p>Leave reminders here.<br>
 </p>
 
