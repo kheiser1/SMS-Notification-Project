@@ -21,7 +21,7 @@ include SendGrid
                     "Notes: " + @reminder.notes
             content = Content.new(type: 'text/plain', value: emailText)
             mail = Mail.new(from, subject, to, content)
-            sg = SendGrid::API.new(api_key: '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')
+           # sg = SendGrid::API.new(api_key:)
             response = sg.client.mail._('send').post(request_body: mail.to_json)
             puts response.status_code
             puts response.body
