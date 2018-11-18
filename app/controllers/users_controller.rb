@@ -1,4 +1,4 @@
-class UsersController < ActionController::Base
+class UsersController < ApplicationController
  
 
 def new
@@ -8,17 +8,33 @@ def show
   @user=current_user
 end
 def create
-  user = User.new(user_params)
-  if user.save
-    @user = user
-    session[:user_id] = user.id
+  @user = User.new(user_params)
+  if @user.save
+    session[:user_id] = @user.id
     UserNotifierMailer.send_signup_email(@user).deliver
     redirect_to '/welcome/index'
   else
-    #render :action => 'new'
-    redirect_to '/signup'
+    @errors = @user.errors.full_messages
+    render :action => 'new'
   end
 end
+def edit
+        @user=current_user
+end
+def update
+   @user = current_user
+    if @user.update(user_params)
+        render 'show'
+    else
+        render 'edit'
+    end
+end
+def destroy
+@user = current_user
+@user.destroy
+redirect_to '/signup'
+end
+
     def user_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end

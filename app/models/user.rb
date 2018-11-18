@@ -9,5 +9,7 @@ class User < ActiveRecord::Base
                        :allow_blank => true,
                        :on => :update    
     has_many :reminders, :class_name => "Reminder"
-    validates :name, :presence => true, :uniqueness => true
+    validates :name, :presence => true, :uniqueness => true, :length => {:within => 3..20}
+    validates :email, :presence => true, :uniqueness => true, :format  => { with: URI::MailTo::EMAIL_REGEXP } 
+     
 end
