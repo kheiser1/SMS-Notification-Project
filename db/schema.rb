@@ -24,9 +24,13 @@ ActiveRecord::Schema.define(version: 2018_11_09_194801) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.boolean "email_notifications", default: true
+    t.boolean "phone_notifications", default: true
+    t.string "login"
     t.string "password_digest"
+    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

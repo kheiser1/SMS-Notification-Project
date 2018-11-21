@@ -20,6 +20,18 @@
     <%= form.label :email %>
     <%= form.text_field :email %>
   </div>
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+   <div class="field">
+    <%= form.label :email_notifications %>
+    <%= form.check_box :email_notifications %>
+  </div>
+   <div class="field">
+    <%= form.label :phone_notifications %>
+    <%= form.check_box :phone_notifications %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
