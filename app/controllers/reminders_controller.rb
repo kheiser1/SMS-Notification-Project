@@ -31,8 +31,8 @@ include SendGrid
                 puts response.headers
             end
             if @user.phone_notifications
-                account_sid = 'AC1966847431bcba3f59f90a063f7ef099'
-                auth_token = '452828480c126bb0adf02292a40c5abf'
+                account_sid = 
+                auth_token = 
                 @client = Twilio::REST::Client.new(account_sid, auth_token)
     
                 message = @client.messages.create(
