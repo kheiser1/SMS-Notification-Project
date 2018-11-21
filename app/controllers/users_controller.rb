@@ -32,7 +32,9 @@ end
 def destroy
 @user = current_user
 @user.destroy
+session[:id] = nil
 redirect_to '/signup'
+
 end
 
     def user_params

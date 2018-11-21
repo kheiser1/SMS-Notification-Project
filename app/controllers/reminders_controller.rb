@@ -1,6 +1,8 @@
 class RemindersController < ApplicationController
 require 'sendgrid-ruby'
 require 'date'
+require 'rubygems'
+require 'twilio-ruby'
 include SendGrid
     
     def new
@@ -17,7 +19,7 @@ include SendGrid
             subject = 'Reminder for ' + @user.name
             emailText = "Title: " + @reminder.title + "\r\n\n" +
 			        "Date: " + @reminder.date.strftime("%b %d %Y") + "\r\n\n" + 
-		        	"Time:" + @reminder.time.strftime("%H:%M") +  "\r\n\n" +
+		        	"Time:" + @reminder.time.strftime("%l:%M %P") +  "\r\n\n" +
                     "Notes: " + @reminder.notes
             content = Content.new(type: 'text/plain', value: emailText)
             mail = Mail.new(from, subject, to, content)
@@ -26,6 +28,22 @@ include SendGrid
             puts response.status_code
             puts response.body
             puts response.headers
+   
+            account_sid = 'AC1966847431bcba3f59f90a063f7ef099'
+            auth_token = '452828480c126bb0adf02292a40c5abf'
+            @client = Twilio::REST::Client.new(account_sid, auth_token)
+
+            message = @client.messages.create(
+                             from: '+13365609193',
+                             body: 'Reminder for ' + @user.name + "\r\n\n" + 
+            "Title: " + @reminder.title + "\r\n\n" + 
+            "Notes: " + @reminder.notes + "\r\n\n" +
+            "Date: " + @reminder.date.strftime("%b %d %Y") + "\r\n\n" + 
+		    "Time:" + @reminder.time.strftime("%l:%M %P") +  "\r\n\n",
+                             to: '+13367071124'
+                           )
+
+        puts message.sid
             redirect_to user_reminder_path(@user, @reminder)
         else
             render 'new'
