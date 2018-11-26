@@ -9,6 +9,8 @@ def show
 end
 def create
   @user = User.new(user_params)
+  numbers_only = @user.phone.chars.map {|x| x[/\d+/]}  
+  @user.phone = "+1" + numbers_only.join("")
   if @user.save
     session[:user_id] = @user.id
     UserNotifierMailer.send_signup_email(@user).deliver
@@ -32,11 +34,13 @@ end
 def destroy
 @user = current_user
 @user.destroy
+session[:id] = nil
 redirect_to '/signup'
+
 end
 
     def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation)
+        params.require(:user).permit(:name, :email, :phone, :email_notifications, :phone_notifications, :password, :password_confirmation)
     end
 end
 

@@ -4,11 +4,11 @@
 </p>
 <p>
     <strong> Date: </strong>
-    <%= @reminder.date %>
+    <%= @reminder.date.strftime("%b" + ". " + "%d %Y") %>
 </p>
 <p>
     <strong> Time: </strong>
-    <%= @reminder.time %>
+    <%= @reminder.time.strftime("%l:%M %P") %>
 </p>
 <p>
     <strong> Notes: </strong>
