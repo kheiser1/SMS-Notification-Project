@@ -280,6 +280,7 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 0.2.1)
   puma (~> 3.11)
   rails (~> 5.2.1)
+  rspec-expectations
   rspec-rails
   sass-rails (~> 5.0)
   sendgrid-ruby
@@ -296,4 +297,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.16.6
+   1.17.1
