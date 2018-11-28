@@ -8,11 +8,34 @@
 	<% end %>
 	</ul>
 <% end %>
-  Name: <%= f.text_field :name %>
-  Email: <%= f.text_field :email %>
-  Phone: <%= f.text_field :phone %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
+
+  <p>
+    <%= f.label :name, 'Name: ' %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :email, 'Email: ' %>
+    <%= f.text_field :email %>
+  </p>
+  
+  <p>
+    <%= f.label :phone, 'Phone: ' %>
+    <%= f.text_field :phone %>
+  </p>
+
+  <p>
+    <%= f.label :password, 'Password: ' %>
+    <%= f.text_field :password %>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation, 'Password Confirmation: ' %>
+    <%= f.text_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
  
 <% end %>
