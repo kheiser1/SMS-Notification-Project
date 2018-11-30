@@ -14,7 +14,6 @@ RSpec.describe  User, type: :model do
     	it "a username" do
           expect(valid_user.name).to eq "ryan"
 		end
-        
         it "a phone" do
           expect(valid_user.phone).to eq "+11234567"
 		end
@@ -25,7 +24,7 @@ RSpec.describe  User, type: :model do
 	end
 	 describe "validates" do
       
-      	let(:user_with_bad_username) {User.new(name: "ry", password: "password", phone:"+11234567", email: "ryan@me.com")}
+    let(:user_with_bad_username) {User.new(name: "ry", password: "password", phone:"+11234567", email: "ryan@me.com")}
 		let(:user_with_bad_email) {User.new(name: "ryan", password: "password", phone:"+11234567", email: "ryanmecom")}
 		let(:user_with_no_password){User.new(name: "ryan", phone:"+11234567", email: "ryan@me.com")}
 
@@ -41,3 +40,4 @@ RSpec.describe  User, type: :model do
 		end
     end
  end
+ #login scenario, expect user to be able to login

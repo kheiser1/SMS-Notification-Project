@@ -1,32 +1,41 @@
-# require 'rails_helper'
-# require 'date'
-# RSpec.describe  Reminder, type: :model do
-# 	# before starting tests, create a test user
-# 	before(:all) do
-#     Reminder.create(title: "Reminder Title ", date: Date.new(2018, 12, 2), time: Time.now, notes: "Reminder Notes")
-#     #User.create(username: "ry", password: "", phone:"+11234567", email: "ryan@me.com")
-#     end
+require 'rails_helper'
+require 'date'
+reminder_title = "Reminder Title"
+reminder_date = DateTime.parse('2012-3-13')
+reminder_time = reminder_date.to_time
+reminder_notes = "Reminder Notes"
+RSpec.describe  Reminder, type: :model do
+	# before starting tests, create a test user
+	before(:all) do
+	user = User.create(name: "ryan", password: "password", phone:"+11234567", email: "ryan@me.com")
+    reminder = Reminder.new(title: reminder_title, date: reminder_date, time: reminder_date, notes: reminder_notes) 
+    reminder.user = user
+    reminder.save!
+    print reminder.time
+    print reminder.date
+    #User.create(username: "ry", password: "", phone:"+11234567", email: "ryan@me.com")
+    end
   
-#     # set test data to the users we created above
-#     let(:valid_reminder) { Reminder.first }
-# 	#let(:invalid_user) { User.last }
+    # set test data to the users we created above
+    let(:valid_reminder) { Reminder.first }
+	#let(:invalid_user) { User.last }
 
-# 	describe "has" do
-#     	it "a title" do
-#           expect(valid_reminder.title).to eq "Reminder Title"
-# 		end
+	describe "has" do
+    	it "a title" do
+          expect(valid_reminder.title).to eq reminder_title
+		end
         
-#         it "a date" do
-#           expect(valid_reminder.date).to eq Date.new(2018, 12, 2)
-# 		end
+        it "a date" do
+          expect(valid_reminder.date).to eq reminder_date
+		end
         
-#         it "a time" do
-#           expect(valid_reminder.time).to eq Time.now
-# 		end
-# 		it "notes" do
-#           expect(valid_reminder.notes).to eq "Reminder Notes"
-# 		end
-# 	end
+        it "a time" do
+          expect(valid_reminder.time).to eq reminder_date
+		end
+		it "notes" do
+          expect(valid_reminder.notes).to eq reminder_notes
+		end
+	end
 # 	 describe "validates" do
       
 #       #	let(:reminder_with_no_title) {Reminder.new(date: "password", phone:"+11234567", email: "ryan@me.com")}
@@ -45,4 +54,4 @@
 #           expect(user_with_no_password).to_not be_valid
 # 		end
    # end
-# end
+end
