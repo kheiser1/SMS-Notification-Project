@@ -31,9 +31,8 @@ include SendGrid
                 puts response.headers
             end
             if @user.phone_notifications
-                account_sid = 
-                auth_token = 
-                @client = Twilio::REST::Client.new(account_sid, auth_token)
+                
+                @client = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOKEN'])
     
                 message = @client.messages.create(
                                  from: '+13365609193',
@@ -43,7 +42,7 @@ include SendGrid
                 "Date: " + @reminder.date.strftime("%b %d %Y") + "\r\n\n" + 
     		    "Time:" + @reminder.time.strftime("%l:%M %P") +  "\r\n\n",
                                  to: @user.phone
-                               )
+                              )
             end
          redirect_to user_reminder_path(@user, @reminder)
             
