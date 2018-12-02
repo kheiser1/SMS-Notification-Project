@@ -14,4 +14,5 @@ And I should see the "Phone" field
 And I should see the "Password" field
 And I should see the "Password Confirmation" field
 When I click on the "Submit" button
-Then I should see the "Signup!" page
+Then I should see the "Login" page
+
