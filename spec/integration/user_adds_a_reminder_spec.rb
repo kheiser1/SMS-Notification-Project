@@ -4,11 +4,12 @@ require 'rails_helper.rb'
 
 RSpec.feature "User logs in successfully", type: :feature do
     before(:all) do
-        User.create(name: "ryan", password: "password", phone:"+11234567", email: "ryan@me.com")
+        User.delete_all
+        user = User.create(name: "test", password: "password", phone:"+13367071124", email: "test@test.com")
     end
      scenario "User successfully signs in" do
         visit login_path
-        fill_in "email", with: "ryan@me.com"
+        fill_in "email", with: "test@test.com"
         fill_in "password", with: "password"
         click_button "Submit"
         expect(page).to have_content("Welcome to the SMS Reminder App")
@@ -16,7 +17,7 @@ RSpec.feature "User logs in successfully", type: :feature do
     
     scenario "User successfully navigates to the new reminders page from the list of reminders page." do
         visit login_path
-        fill_in "email", with: "ryan@me.com"
+        fill_in "email", with: "test@test.com"
         fill_in "password", with: "password"
         click_button "Submit"
         expect(page).to have_content("Welcome to the SMS Reminder App")
@@ -32,7 +33,7 @@ RSpec.feature "User logs in successfully", type: :feature do
     
     scenario "User successfully creates a new reminder" do
         visit login_path
-        fill_in "email", with: "ryan@me.com"
+        fill_in "email", with: "test@test.com"
         fill_in "password", with: "password"
         click_button "Submit"
         expect(page).to have_content("Welcome to the SMS Reminder App")

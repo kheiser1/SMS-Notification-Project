@@ -12,6 +12,7 @@ include SendGrid
     
     def create
         @user=current_user
+        @isTest=@user.email=='test@test.com'
         @reminder = current_user.reminders.new(reminder_params)
         if @reminder.save
             if @user.email_notifications
@@ -32,10 +33,9 @@ include SendGrid
             end
             if @user.phone_notifications
                 
-                @client = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_TOKEN'])
-    
+                @client = Twilio::REST::Client.new(@isTest ? ENV['TWILIO_TEST_SID'] : ENV['TWILIO_SID'], @isTest ? ENV['TWILIO_TEST_TOKEN'] : ENV['TWILIO_TOKEN'])
                 message = @client.messages.create(
-                                 from: '+13365609193',
+                                 from: @isTest ? '+15005550006' : '+13365609193',
                                  body: 'Reminder for ' + @user.name + "\r\n\n" + 
                 "Title: " + @reminder.title + "\r\n\n" + 
                 "Notes: " + @reminder.notes + "\r\n\n" +

@@ -2,7 +2,8 @@ require 'rails_helper'
 RSpec.describe  User, type: :model do
  	# before starting tests, create a test user
 	before(:all) do
-    User.create(name: "ryan", password: "password", phone:"+11234567", email: "ryan@me.com")
+	 User.delete_all
+    User.create(name: "ryan", password: "password", phone:"+15005550006", email: "ryan@me.com")
     #User.create(username: "ry", password: "", phone:"+11234567", email: "ryan@me.com")
     end
   
@@ -15,7 +16,7 @@ RSpec.describe  User, type: :model do
           expect(valid_user.name).to eq "ryan"
 		end
         it "a phone" do
-          expect(valid_user.phone).to eq "+11234567"
+          expect(valid_user.phone).to eq "+15005550006"
 		end
         
         it "a email" do
@@ -24,9 +25,9 @@ RSpec.describe  User, type: :model do
 	end
 	 describe "validates" do
       
-    let(:user_with_bad_username) {User.new(name: "ry", password: "password", phone:"+11234567", email: "ryan@me.com")}
-		let(:user_with_bad_email) {User.new(name: "ryan", password: "password", phone:"+11234567", email: "ryanmecom")}
-		let(:user_with_no_password){User.new(name: "ryan", phone:"+11234567", email: "ryan@me.com")}
+    let(:user_with_bad_username) {User.new(name: "ry", password: "password", phone:"+15005550006", email: "ryan@me.com")}
+		let(:user_with_bad_email) {User.new(name: "ryan", password: "password", phone:"+15005550006", email: "ryanmecom")}
+		let(:user_with_no_password){User.new(name: "ryan", phone:"+15005550006", email: "ryan@me.com")}
 
      	it "the username" do
           expect(user_with_bad_username).to_not be_valid

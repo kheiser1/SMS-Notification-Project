@@ -7,7 +7,8 @@ reminder_notes = "Reminder Notes"
 RSpec.describe  Reminder, type: :model do
 	# before starting tests, create a test user
 	before(:all) do
-	user = User.create(name: "ryan", password: "password", phone:"+11234567", email: "ryan@me.com")
+	User.delete_all
+	user = User.create(name: "ryan", password: "password", phone:"+13367071124", email: "test@test.com")
     reminder = Reminder.new(title: reminder_title, date: reminder_date, time: reminder_date, notes: reminder_notes) 
     reminder.user = user
     reminder.save!
