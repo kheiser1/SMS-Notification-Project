@@ -22,6 +22,6 @@ Then("I should see the {string} page") do |page_name|
   expect(page).to have_content(page_name)
 end
 
-When("I fill in a User field:") do |table|
+And("I fill in a User field:") do |table|
   table = table.hashes
 end
